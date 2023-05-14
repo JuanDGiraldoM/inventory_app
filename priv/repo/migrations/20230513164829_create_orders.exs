@@ -5,8 +5,8 @@ defmodule Inventory.Repo.Migrations.CreateOrders do
     create table(:purchases, primary_key: false) do
       add :id, :binary_id, primary_key: true
       add :quantity, :integer
-      add :unit_price, :float
-      add :amount, :float
+      add :unit_price, :decimal
+      add :amount, :decimal
       add :user_id, references(:accounts, on_delete: :delete_all, type: :binary_id)
       add :item_id, references(:products, on_delete: :delete_all, type: :binary_id)
 

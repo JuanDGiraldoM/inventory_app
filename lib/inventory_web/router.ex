@@ -17,5 +17,6 @@ defmodule InventoryWeb.Router do
     resources "/products", ItemController, except: [:new, :edit, :update]
     put "/products/:id", ItemController, :update
     resources "/purchases", OrderController, except: [:new, :edit, :update]
+    put "/purchases/:id", OrderController, :update
   end
 end

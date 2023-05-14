@@ -7,7 +7,7 @@ defmodule Inventory.Repo.Migrations.CreateUsers do
       add :name, :string
       add :lastname, :string
       add :age, :integer
-      add :balance, :float
+      add :balance, :decimal
 
       timestamps()
     end

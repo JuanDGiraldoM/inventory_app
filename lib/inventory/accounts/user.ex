@@ -8,7 +8,7 @@ defmodule Inventory.Accounts.User do
   @foreign_key_type :binary_id
   schema "accounts" do
     field :age, :integer
-    field :balance, :float
+    field :balance, :decimal
     field :lastname, :string
     field :name, :string
 

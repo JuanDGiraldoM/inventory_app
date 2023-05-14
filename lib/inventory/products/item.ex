@@ -10,7 +10,7 @@ defmodule Inventory.Products.Item do
     field :description, :string
     field :name, :string
     field :quantity, :integer
-    field :unit_price, :float
+    field :unit_price, :decimal
 
     has_many :purchases, Order
 

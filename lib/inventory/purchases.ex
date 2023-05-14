@@ -5,7 +5,8 @@ defmodule Inventory.Purchases do
 
   import Ecto.Query, warn: false
   alias Inventory.Repo
-
+  alias Inventory.Products
+  alias Inventory.Accounts
   alias Inventory.Purchases.Order
 
   @doc """
@@ -18,7 +19,7 @@ defmodule Inventory.Purchases do
 
   """
   def list_orders do
-    Repo.all(Order) |> Repo.preload([:products, :accounts])
+    Repo.all(Order) |> Repo.preload([:user, :item])
   end
 
   @doc """
@@ -50,9 +51,18 @@ defmodule Inventory.Purchases do
 
   """
   def create_order(attrs \\ %{}) do
+    %{unit_price: unit_price} = Products.get_item!(attrs["item_id"])
+
+    new_attrs =
+      Map.put(attrs, "unit_price", unit_price)
+      |> Map.put("amount", Decimal.mult(unit_price, attrs["quantity"]))
+
     %Order{}
-    |> Order.changeset(attrs)
+    |> Order.changeset(new_attrs)
     |> Repo.insert()
+
+    Accounts.get_user!(attrs["user_id"])
+    |> Accounts.update_balance(Decimal.negate(new_attrs["amount"]))
   end
 
   @doc """

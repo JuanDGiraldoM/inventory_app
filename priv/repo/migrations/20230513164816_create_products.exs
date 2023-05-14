@@ -7,7 +7,7 @@ defmodule Inventory.Repo.Migrations.CreateProducts do
       add :name, :string
       add :description, :string
       add :quantity, :integer
-      add :unit_price, :float
+      add :unit_price, :decimal
 
       timestamps()
     end

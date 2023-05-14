@@ -35,7 +35,7 @@ defmodule Inventory.Accounts do
       ** (Ecto.NoResultsError)
 
   """
-  def get_user!(id), do: Repo.get!(User, id)
+  def get_user!(id), do: Repo.get!(User, id) |> Repo.preload(:purchases)
 
   @doc """
   Creates a user.
@@ -70,6 +70,12 @@ defmodule Inventory.Accounts do
   def update_user(%User{} = user, attrs) do
     user
     |> User.changeset(attrs)
+    |> Repo.update()
+  end
+
+  def update_balance(%User{} = user, amount) do
+    user
+    |> User.changeset(%{balance: Decimal.add(user.balance, amount)})
     |> Repo.update()
   end
 
