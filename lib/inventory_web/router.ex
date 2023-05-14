@@ -4,6 +4,7 @@ defmodule InventoryWeb.Router do
   alias InventoryWeb.UserController
   alias InventoryWeb.ItemController
   alias InventoryWeb.OrderController
+  alias InventoryWeb.InventoryController
 
   pipeline :api do
     plug :accepts, ["json"]
@@ -14,9 +15,13 @@ defmodule InventoryWeb.Router do
 
     resources "/accounts", UserController, except: [:new, :edit, :update]
     put "/accounts/:id", UserController, :update
+
     resources "/products", ItemController, except: [:new, :edit, :update]
     put "/products/:id", ItemController, :update
+
     resources "/purchases", OrderController, except: [:new, :edit, :update]
     put "/purchases/:id", OrderController, :update
+
+    get "/inventory", InventoryController, :index
   end
 end

@@ -16,23 +16,18 @@ defmodule InventoryWeb.UserJSON do
   end
 
   defp data(%User{} = user) do
-    IO.inspect(user)
-
     purchases =
-      if is_list(user.purchases) do
-        user.purchases
-        |> Enum.map(&Map.from_struct/1)
-        |> Enum.map(fn purchase ->
+      map_from_list(
+        user.purchases,
+        fn purchase ->
           %{
             id: purchase.id,
             quantity: purchase.quantity,
             unit_price: purchase.unit_price,
             amount: purchase.amount
           }
-        end)
-      else
-        []
-      end
+        end
+      )
 
     %{
       id: user.id,
@@ -42,5 +37,15 @@ defmodule InventoryWeb.UserJSON do
       balance: user.balance,
       purchases: purchases
     }
+  end
+
+  defp map_from_list(list, fun) when is_list(list) and is_function(fun) do
+    list
+    |> Enum.map(&Map.from_struct/1)
+    |> Enum.map(fun)
+  end
+
+  defp map_from_list(_, _) do
+    []
   end
 end

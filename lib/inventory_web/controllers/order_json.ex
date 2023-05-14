@@ -17,36 +17,28 @@ defmodule InventoryWeb.OrderJSON do
 
   defp data(%Order{} = order) do
     item =
-      if is_map(order.item) do
-        [order.item]
-        |> Enum.map(&Map.from_struct/1)
-        |> Enum.map(fn item ->
+      map_from_list(
+        [order.item],
+        fn item ->
           %{
             id: item.id,
             name: item.name,
             description: item.description
           }
-        end)
-        |> List.first()
-      else
-        %{}
-      end
+        end
+      )
 
     user =
-      if is_map(order.user) do
-        [order.user]
-        |> Enum.map(&Map.from_struct/1)
-        |> Enum.map(fn user ->
+      map_from_list(
+        [order.user],
+        fn user ->
           %{
             id: user.id,
             name: user.name,
             lastname: user.lastname
           }
-        end)
-        |> List.first()
-      else
-        %{}
-      end
+        end
+      )
 
     %{
       id: order.id,
@@ -56,5 +48,16 @@ defmodule InventoryWeb.OrderJSON do
       item: item,
       user: user
     }
+  end
+
+  defp map_from_list(list, fun) when is_list(list) and is_function(fun) do
+    list
+    |> Enum.map(&Map.from_struct/1)
+    |> Enum.map(fun)
+    |> List.first()
+  end
+
+  defp map_from_list(_, _) do
+    %{}
   end
 end

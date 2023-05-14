@@ -20,7 +20,7 @@ defmodule InventoryWeb.ItemJSON do
       id: item.id,
       name: item.name,
       description: item.description,
-      quantity: item.quantity,
+      stock: item.quantity,
       unit_price: item.unit_price
     }
   end
