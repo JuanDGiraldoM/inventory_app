@@ -18,7 +18,7 @@ defmodule Inventory.Purchases do
 
   """
   def list_orders do
-    Repo.all(Order)
+    Repo.all(Order) |> Repo.preload([:products, :accounts])
   end
 
   @doc """

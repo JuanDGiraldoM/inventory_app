@@ -2,13 +2,17 @@ defmodule Inventory.Accounts.User do
   use Ecto.Schema
   import Ecto.Changeset
 
+  alias Inventory.Purchases.Order
+
   @primary_key {:id, :binary_id, autogenerate: true}
   @foreign_key_type :binary_id
-  schema "users" do
+  schema "accounts" do
     field :age, :integer
     field :balance, :float
     field :lastname, :string
     field :name, :string
+
+    has_many :purchases, Order
 
     timestamps()
   end

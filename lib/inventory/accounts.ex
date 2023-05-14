@@ -18,7 +18,7 @@ defmodule Inventory.Accounts do
 
   """
   def list_users do
-    Repo.all(User)
+    Repo.all(User) |> Repo.preload(:purchases)
   end
 
   @doc """

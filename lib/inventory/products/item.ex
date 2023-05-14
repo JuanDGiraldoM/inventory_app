@@ -2,6 +2,8 @@ defmodule Inventory.Products.Item do
   use Ecto.Schema
   import Ecto.Changeset
 
+  alias Inventory.Purchases.Order
+
   @primary_key {:id, :binary_id, autogenerate: true}
   @foreign_key_type :binary_id
   schema "products" do
@@ -9,6 +11,8 @@ defmodule Inventory.Products.Item do
     field :name, :string
     field :quantity, :integer
     field :unit_price, :float
+
+    has_many :purchases, Order
 
     timestamps()
   end

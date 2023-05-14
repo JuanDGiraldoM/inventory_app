@@ -15,7 +15,7 @@ defmodule InventoryWeb.OrderController do
     with {:ok, %Order{} = order} <- Purchases.create_order(order_params) do
       conn
       |> put_status(:created)
-      |> put_resp_header("location", ~p"/api/orders/#{order}")
+      #      |> put_resp_header("location", ~p"/api/orders/#{order}")
       |> render(:show, order: order)
     end
   end

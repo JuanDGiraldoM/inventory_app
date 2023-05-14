@@ -15,7 +15,7 @@ defmodule InventoryWeb.ItemController do
     with {:ok, %Item{} = item} <- Products.create_item(item_params) do
       conn
       |> put_status(:created)
-      |> put_resp_header("location", ~p"/api/products/#{item}")
+      #      |> put_resp_header("location", ~p"/api/products/#{item}")
       |> render(:show, item: item)
     end
   end
