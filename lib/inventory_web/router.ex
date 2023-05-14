@@ -5,6 +5,7 @@ defmodule InventoryWeb.Router do
   alias InventoryWeb.ItemController
   alias InventoryWeb.OrderController
   alias InventoryWeb.InventoryController
+  alias InventoryWeb.SalesController
 
   pipeline :api do
     plug :accepts, ["json"]
@@ -23,5 +24,6 @@ defmodule InventoryWeb.Router do
     put "/purchases/:id", OrderController, :update
 
     get "/inventory", InventoryController, :index
+    get "/sales", SalesController, :index
   end
 end

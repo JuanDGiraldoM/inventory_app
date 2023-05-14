@@ -16,9 +16,11 @@ defmodule InventoryWeb.OrderJSON do
   end
 
   defp data(%Order{} = order) do
+    IO.inspect(order)
+
     item =
-      map_from_list(
-        [order.item],
+      map_from_struct(
+        order.item,
         fn item ->
           %{
             id: item.id,
@@ -29,8 +31,8 @@ defmodule InventoryWeb.OrderJSON do
       )
 
     user =
-      map_from_list(
-        [order.user],
+      map_from_struct(
+        order.user,
         fn user ->
           %{
             id: user.id,
@@ -50,14 +52,12 @@ defmodule InventoryWeb.OrderJSON do
     }
   end
 
-  defp map_from_list(list, fun) when is_list(list) and is_function(fun) do
-    list
+  defp map_from_struct(element, fun) when is_map(element) and is_binary(element.id) do
+    [element]
     |> Enum.map(&Map.from_struct/1)
     |> Enum.map(fun)
     |> List.first()
   end
 
-  defp map_from_list(_, _) do
-    %{}
-  end
+  defp map_from_struct(_, _), do: []
 end

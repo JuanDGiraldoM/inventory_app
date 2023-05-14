@@ -1,6 +1,4 @@
 defmodule InventoryWeb.InventoryJSON do
-  alias Inventory.Products.Item
-
   @doc """
   Renders a list of products.
   """
