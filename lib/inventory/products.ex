@@ -82,9 +82,9 @@ defmodule Inventory.Products do
     |> Repo.update()
   end
 
-  def update_inventory(%Item{} = item, quantity) do
+  def update_stock(%Item{} = item, quantity) do
     item
-    |> Item.changeset(%{quantity: item.quantity - quantity})
+    |> Item.changeset(%{quantity: item.quantity + quantity})
     |> Repo.update()
   end
 

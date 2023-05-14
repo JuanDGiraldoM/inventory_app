@@ -36,7 +36,7 @@ defmodule Inventory.Purchases do
       ** (Ecto.NoResultsError)
 
   """
-  def get_order!(id), do: Repo.get!(Order, id)
+  def get_order!(id), do: Repo.get!(Order, id) |> Repo.preload(:item)
 
   @doc """
   Creates a order.
@@ -65,9 +65,9 @@ defmodule Inventory.Purchases do
           {:error, message} ->
             {:error, message}
 
-          %{balance: balance} ->
+          _ ->
             Accounts.update_balance(user, Decimal.negate(total))
-            Products.update_inventory(item, attrs["quantity"])
+            Products.update_stock(item, -attrs["quantity"])
 
             new_attrs =
               Map.put(attrs, "unit_price", unit_price)

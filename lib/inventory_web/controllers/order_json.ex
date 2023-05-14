@@ -16,25 +16,45 @@ defmodule InventoryWeb.OrderJSON do
   end
 
   defp data(%Order{} = order) do
-    IO.inspect(order)
-    #    item = [order.item]
-    #           |> Enum.map(&Map.from_struct/1)
-    #           |> Enum.map(fn item ->
-    #      %{
-    #      id: item.id,
-    #        name: item.name,
-    #        description: item.description,
-    #        price: item.unit_price,
-    #        stock: item.quantity}
-    #    end)
+    item =
+      if is_map(order.item) do
+        [order.item]
+        |> Enum.map(&Map.from_struct/1)
+        |> Enum.map(fn item ->
+          %{
+            id: item.id,
+            name: item.name,
+            description: item.description
+          }
+        end)
+        |> List.first()
+      else
+        %{}
+      end
+
+    user =
+      if is_map(order.user) do
+        [order.user]
+        |> Enum.map(&Map.from_struct/1)
+        |> Enum.map(fn user ->
+          %{
+            id: user.id,
+            name: user.name,
+            lastname: user.lastname
+          }
+        end)
+        |> List.first()
+      else
+        %{}
+      end
+
     %{
       id: order.id,
-      user_id: order.user_id,
-      item_id: order.item_id,
       quantity: order.quantity,
       unit_price: order.unit_price,
-      amount: order.amount
-      #      item: item
+      amount: order.amount,
+      item: item,
+      user: user
     }
   end
 end
