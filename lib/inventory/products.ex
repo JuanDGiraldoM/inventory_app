@@ -37,6 +37,15 @@ defmodule Inventory.Products do
   """
   def get_item!(id), do: Repo.get!(Item, id)
 
+  def check_stock!(id, quantity) do
+    item = get_item!(id)
+
+    case item.quantity >= quantity do
+      true -> item
+      false -> {:error, "Insufficient stock"}
+    end
+  end
+
   @doc """
   Creates a item.
 
@@ -70,6 +79,12 @@ defmodule Inventory.Products do
   def update_item(%Item{} = item, attrs) do
     item
     |> Item.changeset(attrs)
+    |> Repo.update()
+  end
+
+  def update_inventory(%Item{} = item, quantity) do
+    item
+    |> Item.changeset(%{quantity: item.quantity - quantity})
     |> Repo.update()
   end
 

@@ -37,6 +37,15 @@ defmodule Inventory.Accounts do
   """
   def get_user!(id), do: Repo.get!(User, id) |> Repo.preload(:purchases)
 
+  def check_balance!(id, amount) do
+    user = get_user!(id)
+
+    case Decimal.compare(user.balance, amount) do
+      result when result in [:gt, :eq] -> user
+      _ -> {:error, "Insufficient funds"}
+    end
+  end
+
   @doc """
   Creates a user.
 

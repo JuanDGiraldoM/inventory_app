@@ -21,4 +21,13 @@ defmodule InventoryWeb.FallbackController do
     |> put_view(html: InventoryWeb.ErrorHTML, json: InventoryWeb.ErrorJSON)
     |> render(:"404")
   end
+
+  def call(conn, {:error, message}) do
+    IO.inspect(message)
+
+    conn
+    |> put_status(:bad_request)
+    |> put_view(html: InventoryWeb.ErrorHTML, json: InventoryWeb.ErrorJSON)
+    |> render(:"400", message: message)
+  end
 end
