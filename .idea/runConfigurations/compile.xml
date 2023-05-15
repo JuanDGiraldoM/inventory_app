@@ -1,0 +1,14 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="compile" type="MixRunConfigurationType" factoryName="Elixir Mix">
+    <module name="inventory" />
+    <mix>
+      <argument>do</argument>
+      <argument>deps.get,</argument>
+      <argument>compile</argument>
+      <argument>--force</argument>
+    </mix>
+    <module name="inventory" />
+    <module-filters inherit-application-module-filters="true" />
+    <method v="2" />
+  </configuration>
+</component>

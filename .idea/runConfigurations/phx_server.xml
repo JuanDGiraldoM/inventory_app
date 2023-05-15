@@ -1,0 +1,11 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="phx.server" type="MixRunConfigurationType" factoryName="Elixir Mix">
+    <module name="inventory" />
+    <mix>
+      <argument>phx.server</argument>
+    </mix>
+    <module name="inventory" />
+    <module-filters inherit-application-module-filters="true" />
+    <method v="2" />
+  </configuration>
+</component>

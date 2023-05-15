@@ -1,0 +1,319 @@
+{
+	"info": {
+		"_postman_id": "61e283ca-a5d3-4d94-9770-8d69646c7caf",
+		"name": "Inventory App",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "6858992"
+	},
+	"item": [
+		{
+			"name": "Accounts",
+			"item": [
+				{
+					"name": "Get All",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/api/accounts",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"accounts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get account by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/api/accounts/30896fcf-5826-41e0-b9bf-7ab8ea5d5967",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"accounts",
+								"30896fcf-5826-41e0-b9bf-7ab8ea5d5967"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register account",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user\": {\n        \"name\": \"Mishell\",\n        \"lastname\": \"Yagual\",\n        \"balance\": 3000,\n        \"age\": 30\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/accounts",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"accounts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Modify account",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user\": {\n        \"balance\": 100\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/accounts/d98282ef-bff9-46e1-a54a-2d45b0233fef",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"accounts",
+								"d98282ef-bff9-46e1-a54a-2d45b0233fef"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Products",
+			"item": [
+				{
+					"name": "Get All",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/api/products",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get product by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/api/products/8d4720af-d427-48b3-8515-d0a2a50904d2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"products",
+								"8d4720af-d427-48b3-8515-d0a2a50904d2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register product",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"item\": {\n        \"name\": \"Tennis\",\n        \"description\": \"Tennis deportivos\",\n        \"quantity\": 5,\n        \"unit_price\": 30\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/products",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Modify product stock",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"item\": {\n        \"quantity\": 15\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/products/8d4720af-d427-48b3-8515-d0a2a50904d2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"products",
+								"8d4720af-d427-48b3-8515-d0a2a50904d2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Purchases",
+			"item": [
+				{
+					"name": "Get All",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/api/purchases",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"purchases"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Do purchase",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"order\": {\n        \"user_id\": \"c0a76369-5f25-48ed-9764-e95133d1b41b\",\n        \"item_id\": \"9e4c37dc-f9c2-4c3e-bdc3-0aa873bd4462\",\n        \"quantity\": 5\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/purchases",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"purchases"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Inventory",
+			"item": [
+				{
+					"name": "Get inventory",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/api/inventory",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"inventory"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Sales",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/api/sales",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"sales"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
