@@ -1,0 +1,11 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="ecto.migrate" type="MixRunConfigurationType" factoryName="Elixir Mix">
+    <module name="inventory" />
+    <mix>
+      <argument>ecto.migrate</argument>
+    </mix>
+    <module name="inventory" />
+    <module-filters inherit-application-module-filters="true" />
+    <method v="2" />
+  </configuration>
+</component>
